@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MTasking - Proyecto</title>
+  <link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar">
+  <span class="brand">MTasking</span>
+  <div class="nav-user">
+    <span id="nav-username">Cargando...</span>
+    <button class="btn-logout" onclick="logout()">Cerrar sesión</button>
+  </div>
+</nav>
+
+<!-- Contenido -->
+<div class="container">
+
+  <!-- Breadcrumb -->
+  <div class="breadcrumb">
+    <a href="dashboard.html">Mis proyectos</a> &rsaquo; <span id="project-title">...</span>
+  </div>
+
+  <!-- Info del proyecto -->
+  <div class="card" id="project-info">
+    <h2 id="proj-name">Cargando proyecto...</h2>
+    <p id="proj-desc" style="color:#888; font-size:0.93rem; margin-top:4px;"></p>
+  </div>
+
+  <!-- Crear tarea -->
+  <div class="card">
+    <h3>Nueva tarea</h3>
+    <div class="alert alert-error" id="task-error"></div>
+    <div class="alert alert-success" id="task-success"></div>
+
+    <div class="form-group">
+      <label for="task-titulo">Título</label>
+      <input type="text" id="task-titulo" placeholder="Ej: Diseñar base de datos" />
+    </div>
+    <div class="form-group">
+      <label for="task-desc">Descripción (opcional)</label>
+      <textarea id="task-desc" placeholder="Detalle de la tarea..."></textarea>
+    </div>
+    <div style="display:flex; gap:16px; flex-wrap:wrap;">
+      <div class="form-group" style="flex:1; min-width:160px;">
+        <label for="task-estado">Estado</label>
+        <select id="task-estado">
+          <option value="Pendiente">Pendiente</option>
+          <option value="En progreso">En progreso</option>
+          <option value="Terminado">Terminado</option>
+        </select>
+      </div>
+      <div class="form-group" style="flex:1; min-width:160px;">
+        <label for="task-responsable">Responsable</label>
+        <select id="task-responsable">
+          <option value="">Sin asignar</option>
+        </select>
+      </div>
+    </div>
+    <button class="btn btn-success" onclick="createTask()">Agregar tarea</button>
+  </div>
+
+  <!-- Lista de tareas -->
+  <div class="card">
+    <h3>Tareas del proyecto</h3>
+    <div id="tasks-container">
+      <p class="empty-state">Cargando tareas...</p>
+    </div>
+  </div>
+
+</div>
+
+<!-- Modal detalle de tarea -->
+<div class="modal-overlay" id="task-modal">
+  <div class="modal">
+    <div class="modal-header">
+      <h3>Detalle de tarea</h3>
+      <button class="modal-close" onclick="closeModal()">&#215;</button>
+    </div>
+    <div id="modal-content">
+      <div class="detail-grid">
+        <div class="detail-field" style="grid-column: 1 / -1;">
+          <label>Título</label>
+          <p id="modal-titulo">—</p>
+        </div>
+        <div class="detail-field" style="grid-column: 1 / -1;">
+          <label>Descripción</label>
+          <p id="modal-descripcion">—</p>
+        </div>
+        <div class="detail-field">
+          <label>Estado</label>
+          <p id="modal-estado">—</p>
+        </div>
+        <div class="detail-field">
+          <label>Responsable</label>
+          <p id="modal-responsable">—</p>
+        </div>
+        <div class="detail-field">
+          <label>Proyecto</label>
+          <p id="modal-proyecto">—</p>
+        </div>
+        <div class="detail-field">
+          <label>Creada</label>
+          <p id="modal-fecha">—</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="../js/tasks.js"></script>
+</body>
+</html>
